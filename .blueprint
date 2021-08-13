@@ -1,0 +1,39 @@
+created:
+    - app/Http/Controllers/CustomerController.php
+    - app/Http/Controllers/ItemsController.php
+    - app/Http/Controllers/BillsController.php
+    - database/factories/CustomerFactory.php
+    - database/factories/BillHeaderFactory.php
+    - database/factories/BillHeaderItemsFactory.php
+    - database/factories/ItemsFactory.php
+    - database/migrations/2021_08_12_112446_create_customers_table.php
+    - database/migrations/2021_08_12_112447_create_bill_headers_table.php
+    - database/migrations/2021_08_12_112448_create_bill_header_items_table.php
+    - database/migrations/2021_08_12_112449_create_items_table.php
+    - app/customer.php
+    - app/bill_header.php
+    - app/bill_header_items.php
+    - app/items.php
+    - tests/Feature/Http/Controllers/CustomerControllerTest.php
+    - tests/Feature/Http/Controllers/ItemsControllerTest.php
+    - tests/Feature/Http/Controllers/BillsControllerTest.php
+    - app/Http/Requests/ItemStoreRequest.php
+    - app/Http/Requests/ItemUpdateRequest.php
+    - app/Http/Requests/BillStoreRequest.php
+    - app/Http/Requests/BillUpdateRequest.php
+    - resources/views/item/index.blade.php
+    - resources/views/item/create.blade.php
+    - resources/views/item/show.blade.php
+    - resources/views/item/edit.blade.php
+    - resources/views/bill/index.blade.php
+    - resources/views/bill/create.blade.php
+    - resources/views/bill/show.blade.php
+    - resources/views/bill/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    Customer: { name: string, address: string, city: 'string nullable', softdeletes: softDeletes }
+    customer: { name: string, address: string, city: 'string nullable', softdeletes: softDeletes }
+    bill_header: { bill_no: string, date: date, customer_id: 'id foreign:customer', total_amount: 'decimal:8,2', softdeletes: softDeletes }
+    bill_header_items: { bill_id: 'id foreign:bill_header', item_id: 'id foreign:items', rate: 'decimal:8,2', qty: number, base_amount: 'decimal:8,2', softdeletes: softDeletes }
+    items: { name: string, price: 'decimal:8,2', softdeletes: softDeletes }

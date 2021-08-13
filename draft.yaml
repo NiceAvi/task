@@ -1,0 +1,32 @@
+models:
+  customer:
+    name: string
+    address: string
+    city: string nullable
+    softDeletes
+  bill_header:
+    bill_no: string
+    date: date
+    customer_id: id foreign:customer
+    total_amount: decimal:8,2
+    softDeletes
+  bill_header_items:
+    bill_id: id foreign:bill_header
+    item_id: id foreign:items
+    rate: decimal:8,2
+    qty: number
+    base_amount: decimal:8,2
+    softDeletes
+
+  items:
+    name: string
+    price: decimal:8,2
+    softDeletes
+
+controllers:
+  Customer:
+    resource
+  Items:
+    resource
+  Bills:
+    resource
